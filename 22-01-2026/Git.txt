@@ -69,12 +69,23 @@
 	.git switch <branch-name> - this also used to change the branch.(Alternate options).
 	.git branch -d <branch-name> - used to delete the branch.
 	.git push origin <branch-name> - used to push branch local repo to remote repo and create the new branch on the remote repo.
-	.git merge <branch-name> - Merges changes from the given branch into the current branch.
+	.git merge <branch-name> - Merges changes from the given branch into the current branch.(if do merge check your branch is main).
 	.git push origin <branch-name> - Pushes the local branch changes to the remote repository.
 	.git pull origin <branch-name> - Fetches and merges changes from the remote repository into the local branch.
 	.git log - Displays the commit history for the current branch.
 	.git diff - used to track the changes in the code.
 	.git diff --staged -used to track the changes in the code after the add file to stageing area.
 	.git rm --cached <file name> - After we commit, if we want to delete the file git rm --cached <file name> comment is used tpo delete.
+    .git stash -this comment is used to incase you working on the non priority project suddendly lead give priority work now your is not completed in that case use git stash to store the without commit and later finish it.
+    .git stash --list - used to view the stash list.
+    .git stash apply <stash id> - used to resume the work on the project. 
 	
-6.
+6. Github vs Gitlab vs Bitbucket:
+
+    | Feature         | GitHub          | GitLab                | Bitbucket           |
+    | --------------- | --------------- | --------------------- | ------------------- |
+    | Popularity      | Most popular    | Popular in DevOps     | Used in enterprise  |
+    | CI/CD           | GitHub Actions  | Built-in strong CI/CD | Bitbucket Pipelines |
+    | Used By         | Open source     | DevOps teams          | Atlassian users     |
+    | Integrates With | Everything      | Kubernetes strong     | Jira, Trello        |
+
