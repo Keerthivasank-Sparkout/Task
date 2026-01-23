@@ -1,0 +1,222 @@
+1. What is Oops concepts?
+	> OOPS -stands for Object Oriented Proramming
+	> Oops is proagramming Paradigm based on the concept of the object that contain data(field)and behavior(method). 
+	it focuses on desiging software that closely represent real world entities.
+	> it improve the code reusability.
+	> Enhance maintainability and scalability.
+	> Make program easier and to understand and manage.
+	> reference:https://www.w3schools.com/java/java_oop.asp
+
+2. What is Purpose of the oops concepts?
+	> Make a code more modular,
+	> Easier to maintain.
+	> Especially for complex applications, by using core concepts like 
+		Encapsulation, 
+		Inheritance, 
+		Abstraction,
+		and Polymorphism 
+	  to manage complexity and improve readability.
+	> It helps organize code logically, promoting code reuse and simplifying 
+	  development by allowing objects to interact with each other without needing to know internal details.
+	>reference: https://www.google.com/search?q=what+is+purpose+of+the+oops&sxsrf=ANbL-n5ExZJeHn3e6kabD37AGKnNVey1PA%3A1769056808350
+
+3. What is class and object ?
+	> Class and Object are two main aspects of object-oriented proagramming.
+	> Class is a template for the object.
+		Class Car{
+		
+		}
+	> An object is instance of the class.
+		Class Car{
+			String model;
+			String Brand;
+			int Milage;
+			void drive(){
+				s.o.p("Driving...");
+			}
+			void break(){
+				s.o.p("Stop the car...");
+			}
+		}
+		class Main{
+			p s v m(String [] args){
+				Car obj_1 = new Car(); -- object is created.
+				obj_1.model="xuv";
+				obj_1.Brand="benz";
+				obj_1.Milage=10;
+				obj_1.drive();
+				obj_1.break();
+			}
+		}
+	>reference:https://www.w3schools.com/java/java_classes.asp
+
+4. What is Constructors?
+	> A constructor is a special method that is used to intilize objects.
+	> The constructor is called when object of a class is created.
+	> it can be used to set intial vlaues for object attributes.
+	> the constructor name must same as the class name, and it can not return anything.
+	>reference:https://www.w3schools.com/java/java_constructors.asp
+
+5. What is (this) keyword?
+	> The this keyword refers to the current object in a method or constructor.
+	> The this keyword is often used to avoid confusion when class attributes have the same name as method or constructor parameters.
+	> Sometimes a constructor or method has a parameter with the same name as a class variable. when this happens, the parameter temporarily hides the class variable inside that method or constructor.
+		To refer to the class variable  and not the parameter, you can use the this keyword:
+		class Main{
+			int x;
+			
+			public Main(int x){
+				this.x = x //this.x is refer to class variable 
+			}
+			public static void main(String [] args){
+				Main obj=new Main(5);
+				System.out.println(obj.x);
+			}
+		}
+	> Think of this.x = x; as: "this.x (the class variable) gets the value of x (the parameter)."
+	> Without this, the code above x = x; would set the parameter x equal to itself, and the class variable would stay uninitialized (0).
+	> Calling a Constructor from Another Constructor
+	> You can also use this() to call another constructor in the same class.
+	> This is useful when you want to provide default values or reuse initializati on code instead of repeating it.
+		public class Main {
+			int modelYear;
+			String modelName;
+				// Constructor with one parameter
+			public Main(String modelName) {
+				// Call the two-parameter constructor to reuse code and set a default year    
+				this(2020, modelName);
+			 }
+			  // Constructor with two parameters
+			public Main(int modelYear, String modelName) {
+				// Use 'this' to assign values to the class variables
+				this.modelYear = modelYear;
+				this.modelName = modelName;
+			  }
+
+			  // Method to print car information
+			  public void printInfo() {
+				System.out.println(modelYear + " " + modelName);
+			  }
+
+			  public static void main(String[] args) {
+				// Create a car with only model name (uses default year)
+				Main car1 = new Main("Corvette");
+
+				// Create a car with both model year and name
+				Main car2 = new Main(1969, "Mustang");
+
+				car1.printInfo();
+				car2.printInfo();
+			  }
+			}
+	>reference:https://www.w3schools.com/java/java_this.asp
+6. What is Access modifiers?
+	> The access modifier meaning this is used to set the access level for classes, attributes, methods and constructors.
+	> Its divide into two types
+		> Access Modifiers -controls the access level.
+		> Non-Access modifiers - do not control the access level, but provides other fuctionality.
+	
+	Access modifiers
+	> Public - This code is accessible for all classes.
+	> private - The code is only accessible within the declared class.
+	> default - The code is only accessible in the same package. This is used when you don't specify a modifier.
+	> protected - The code is accessible in the same package and subclasses.
+
+	Non-Access modifiers
+	> Non-access modifiers do not control visibility (like public or private), but instead add other features to classes, methods, and attributes.
+	> The most commonly used non-access modifiers are final, static, and abstract.
+	
+	> final - Attributes and methods cannot be overridden/modified
+	> static - Attributes and methods belong to the class, not to objects. This means all objects share the same static attribute, and static methods can be called without creating objects.
+	> abstract - Can only be used in an abstract class, and can only be used on methods. The method does not have a body, for example abstract void run();. The body is provided by the subclass (inherited from).
+	>reference:https://www.w3schools.com/java/java_modifiers.asp
+
+7. what is Encapsulation ?
+	> Encapsulation means wrapping data and methods together and restricting direct access using private keyword.
+	> Provide public get and set methods to access and update the value of a private variable.
+	>reference:https://www.w3schools.com/java/java_encapsulation.asp
+
+8. What is inheritance?
+	> Inheritance allows one class to acquire properties and methods from another class by using extends keyword.
+	> subclass (child) - the class that inherits from another class.
+	> superclass (parent) - the class being inherited from.
+	> To inherit from a class, use the extends keyword.
+	>reference:https://www.geeksforgeeks.org/java/object-oriented-programming-oops-concept-in-java/
+
+9. What is Polymorphism?
+	> This means one entity can take many forms. In Java, polymorphism allows the same method or object to behave differently based on the context.
+		Types of Polymorphism:
+			1.Method Overloading
+			2.Method Overriding
+		
+		> Method Overloading:
+			Also, known as compile-time polymorphism, is the concept of Polymorphism where more 
+		  than one method share the same name with different signature(Parameters) in a class. 
+		  The return type of these methods can or cannot be same.
+		> Method Overriding:
+			Also, known as run-time polymorphism, is the concept of Polymorphism where method in the child class has the same name, 
+		  return-type and parameters as in parent class. The child class provides the implementation in the method already written.
+	>reference:https://www.geeksforgeeks.org/java/polymorphism-in-java/
+	
+10. What is super keyword?
+	 > In java, the super keyword is used to refer the parent class of a subclass.
+	 > The most common use of the super keyword is to eliminate the confusion between superclasses and subclasses that have methods with the same name.
+		> It can be used in two main ways:
+			To access attributes and methods from the parent class
+			To call the parent class constructor
+			
+		> Access Parent Methods
+			class Animal {
+			  public void animalSound() {
+				System.out.println("The animal makes a sound");
+			  }
+			}
+
+			class Dog extends Animal {
+			  public void animalSound() {
+				super.animalSound(); // Call the parent method
+				System.out.println("The dog says: bow wow");
+			  }
+			}
+
+			public class Main {
+			  public static void main(String[] args) {
+				Dog myDog = new Dog();
+				myDog.animalSound();
+			  }
+			}
+		> Call Parent Constructor
+			class Animal {
+			  Animal() {
+				System.out.println("Animal is created");
+			  }
+			}
+
+			class Dog extends Animal {
+			  Dog() {
+				super(); // Call parent constructor
+				System.out.println("Dog is created");
+			  }
+			}
+
+			public class Main {
+			  public static void main(String[] args) {
+				Dog myDog = new Dog();
+			  }
+			}
+	>reference:https://www.w3schools.com/java/java_super.asp
+
+11. What is Abstraction?
+	 > Data Abstraction  is the process of hiding certain details andd showing only essential information to the user.
+	 > Abstraction can achieved with either abstract class or interfce.
+	 > The abstract keyword is a non-access modifier, used for classes and methods:
+		> Abstract class: is a restricted class that cannot be used to create objects (to access it, it must be inherited from another class).
+		> Abstract method: can only be used in an abstract class, and it does not have a body. The body is provided by the subclass (inherited from).
+	 >reference:https://www.w3schools.com/java/java_abstract.asp
+
+12. What is interface?
+	 > Another way to achieve abstraction in Java, is with interfaces.
+	 > An interface is a completely "abstract class" that is used to group related methods with empty bodies
+	 > To access the interface methods, the interface must be "implemented" (kinda like inherited) by another class with 
+	 the implements keyword (instead of extends). The body of the interface method is provided by the "implement" class:
+
