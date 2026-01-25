@@ -35,17 +35,17 @@
         .Not automatically sent to server
 
 7.What is JSON?
-    >JSON (JavaScript Object Notation) is a lightweight, text-based data format used to store and exchange structured data between systems, especially between a client and a server in web applications. 
-     It represents data using key–value pairs and arrays, making it easy for humans to read and write, and simple for machines to parse and generate. 
-     Although it is derived from JavaScript object syntax, JSON is language-independent and can be used with many programming languages such as Java, Python, C#, and Node.js.
-     In web development, JSON is commonly used in APIs to send and receive data over HTTP because it is compact, efficient, and widely supported.
-
+    >JSON (JavaScript Object Notation) is a lightweight, text-based, and language-independent data-interchange format designed to be easily read by humans and parsed by machines. 
+     It is widely used for transmitting data between servers and web applications. JSON is structured using key-value pairs (objects) and ordered lists (arrays), offering a flexible alternative to XML.
 8.what is JSON Serialization?
-    >JSON serialization is the process of converting a programming object (like a JavaScript object) into a JSON-formatted string so that it can be stored or transmitted over a network. 
-     Since data sent through HTTP must be in text format, objects cannot be sent directly; they must first be converted into a JSON string. 
-     This conversion is called serialization. For example, in JavaScript, the `JSON.stringify()` method is used to serialize an object into a JSON string. 
-     The opposite process, called deserialization, converts the JSON string back into a usable object using `JSON.parse()`. 
-     JSON serialization is commonly used in web applications when sending data between the frontend and backend through APIs.
+    >JSON serialization means converting an object into a JSON string so it can be sent over the internet or stored.
+    >Since HTTP can only send data in text format, we cannot send objects directly. So we convert the object into a JSON string. This process is called serialization.
+    >In JavaScript, we use:
+    >JSON.stringify() → to convert an object into a JSON string.
+    >The reverse process is called deserialization, where we convert the JSON string back into an object.
+    >In JavaScript, we use:
+        >JSON.parse() → to convert a JSON string back into an object.
+        >JSON serialization is commonly used when sending data between frontend and backend through APIs.
 
 9.What is Encryption and Decryption?
     >Encryption is the process of converting plain text into ciphertext to protect data
@@ -83,4 +83,28 @@
                 .Admin can delete users
                 .Student can view courses
                 .Teacher can upload materials
+
+12.What is Session-Based Authentication?
+    Session-based authentication is a stateful authentication technique where we use sessions to keep track of the authenticated user. Here is how Session Based Authentication works:
+        > User submits the login request for authentication.
+        > Server validates the credentials. If the credentials are valid, the server initiates a session and stores some information about the client. This information can be stored in memory, file system, or database. 
+           The server also generates a unique identifier that it can later use to retrieve this session information from the storage. Server sends this unique session identifier to the client.
+        > Client saves the session id in a cookie and this cookie is sent to the server in each request made after the authentication.
+        > Server, upon receiving a request, checks if the session id is present in the request and uses this session id to get information about the client.
+    Reference:https://roadmap.sh/guides/session-based-authentication
+
+13.What is JWT-Based Authentication?
+    JWT (JSON Web Token) based authentication is a stateless authentication technique where the server does not store session data. Instead, authentication information is stored inside a signed token that is sent to the client.
+    Here is how JWT Based Authentication works:
+        > User submits the login request for authentication.
+        > Server validates the credentials. If the credentials are valid, the server generates a JWT token. \
+        > This token contains encoded information about the user (like user id, role, etc.). 
+        > The token is digitally signed using a secret key (or private key).
+        > Server sends this JWT token back to the client.
+        > Client saves the JWT (usually in localStorage, sessionStorage, or cookies).
+        > This token is sent in the Authorization header (Bearer Token) in every request after authentication.
+        > Server, upon receiving a request, extracts the JWT from the header and verifies its signature using the secret key. If the token is valid and not expired, the server allows access to the requested resource.
+        > And that is how JWT-based authentication works.
+    Reference:https://youtu.be/7Q17ubqLfaM?si=fF_mWg8EboNO_aMn
+
 
