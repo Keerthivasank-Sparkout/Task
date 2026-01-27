@@ -1,0 +1,115 @@
+1.What is Database?
+    >A database is an organized collection of structured information or data, typically stored electronically in a computer system and controlled by a Database Management System (DBMS). 
+    It enables efficient data storage, retrieval, modification, and management, often using SQL for structured data or other formats for NoSQL types. 
+
+2.what is MongoDB?
+    >MongoDB is a popular, open-source NoSQL document database designed for high performance, flexibility, and scalability. 
+    >Unlike traditional relational databases that use tables and rows, it stores data in JSON-like documents (BSON) with dynamic schemas. 
+    >This allows developers to store various data structures, making it ideal for modern, rapidly evolving applications.
+
+    >use <db name> - this commed line is used to create the Database.
+    >db.createCollection("<collection name>") - this commend line is used to create the collection(like table in sql).
+    >db.<collectionName>.insertOne(<data>) - this is used to insert one data to the collection.
+        Ex:
+          db.DemoCollection.insertOne(
+            {
+                name:"Keerthi",
+                age:24,
+                phone:8220373623
+            }
+          )
+    >db.<collectionName>.insertMany([<data>]) - this is used to insert many data to the collection.
+        EX:
+          db.DemoCollection.insertMany([
+            {
+                name:"keerthi",
+                age:24
+            },
+            {
+                name:"dhivin",
+                age:23
+            }
+          ])
+    >db.<collectionName>.find({<name:"keerthi">})-To select data from a collection in MongoDB, we can use the find() method.This method accepts a query object. If left empty, all documents will be returned.
+    >db.<collectionName>.findOne({<name:"keerthi">})-To select only one document, we can use the findOne() method.This method accepts a query object. If left empty, it will return the first document it finds.
+    >db.<collectionName>.drop() - used to delete the collection.(like drop table)
+    >db.<collectionName>.dropDatabase() - used to delete the database.
+    >db.<collectionName>.find().sort(<key(name):1>) - this is used to sort by name in ascending order (+1 ase / -1 dse).
+    >db.<collectionName>.find().sort(<key(name):1>).limit(1) - this is used to top order in first list.
+    >db.<collectionName>.updateOne({name:"keerthi"},{$set:{name:"keerthivasan"}}) - this is used to update the first occur data.
+        .first curly brace is to find the data
+        .second curly breace is to updated data
+        .$set - is used to set the variable
+        .$unset -is used to remove the key in already defind in the collection.
+        .$inc - is used to increament the value.
+        >Array Manipulating comments
+        .$push - is used to add element to array.its allow the duplicate.
+        .$addToSet - is used to add element to array but its not allow the duplicate.
+        .$pull - is used to remove the element in the array.
+        .$pop - is used to remove the element in the array direction basis(db.<collectionName>.updateOne({name:"keerthi"},{$pop:{name:1}})) (+1 is remove bottom of the element/ -1 remove the top of the element)
+        .db.<collectionName>.updateMany({name:{$exists:false}},{$set:{name:"keerthivasan"}}) - this $exists is used to find the key present in collection in case not present add this to all 
+        .db.<collectionName>.updateMany({},{$set:{name:"keerthi"}}) - if first curly brace is empty it should update the all collection to set the value.
+        .db.<collectionName>.updateMany({name:"keerthi"},{$set:{name:"vasu"}},{upsert:true}) - $upsert is used to incase the searching element is not present in this collection, insert it.
+        .db.<collectionName>.deleteOne({name:"keerthi"}) -this is used to delete one record from the collection.
+        .db.<collectionName>.deleteMany({name:"keerthivasan"}) - this is used to delete the condition matched data in entire collection.
+        .db.<collectionName>.find({age:{$gt:24}}) 
+            $gt - Greaterthan
+            $lt - Lessthan
+            $gte -greaterthen or equal
+            $lte -lessthen or equal
+            $eq - equal to
+            $in - exact match data
+                db.<collectionName>.find({name:{$in:["keerthi","dhivin"]}}) - this is used to find this data 
+>Logical Operators
+    .$and
+    .$or
+    .$nor
+        Ex:
+            db.<collectionName>.find({$and[{name:"keerthi"},{age:24}]}) - only two condition matched data only return.
+            db.<collectionName>.find({$or[{name:"keerthi"},{age:24}]}) - any one condition matched data return.
+            db.<collectionName>.find({$nor[{name:"keerthi"},{age:24}]}) - it skip the give data in query then return the all data in entire collection.
+>Aggregate Functions
+    db.<collectionName>.aggregate(
+        [
+            {$group:{_id:"$name" , total:{$sum :"$amount"}}},
+            {$sort:{name:-1}},
+            {$limit:2}       
+        ])
+        .$match - used to filter the data.it means only matched data.
+            ex:
+                db.<collectionName>.aggregate([{$match:{name:"keerthi"}}])
+        .$group - is used to group the multiple key(like mysql column groupby).
+        .{_id:"$name"}-this is consider as the id
+        .$sum - used to add all record
+        .$max-used to find the maximum
+        .$min-used to find the minimum
+        .$avg-used to find the average
+        .$count-used to count the data
+>Validation
+    >Schema validation rules can be created in order to ensure that all documents in a collection share a similar structure.
+     Ex:
+        db.createCollection("<collectionName>",{
+            validator:{
+                $jsonSchema:{
+                    bsonType:"object",
+                    required:["name","age"],
+                    properties:{
+                        name:{
+                            bsonType:"string",
+                            description:"name is required"
+                        },
+                        age:{
+                            bsonType:"number",
+                            description:"age is number - required"
+                        }
+                    }
+                }
+            }
+        })
+>lookup
+    This aggregation stage performs a left outer join to a collection in the same database.
+        There are four required fields:
+            .from: The collection to use for lookup in the same database
+            .localField: The field in the primary collection that can be used as a unique identifier in the from collection.
+            .foreignField: The field in the from collection that can be used as a unique identifier in the primary colle
+            .as: The name of the new field that will contain the matching documents from the from collection.
