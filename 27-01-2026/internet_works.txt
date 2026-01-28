@@ -1,0 +1,55 @@
+1.what is internet?
+    >Internet is a global communication system that links together thousands of individual networks. It allows exchange of information between two or more computers on a network. 
+     Thus internet helps in transfer of messages through mail, chat, video & audio conference, etc.
+    
+2.How does Internet works?
+    >Connect to the Internet
+        Your device connects to a router or modem, which links you to the Internet. This is the foundation of your connection.
+    >Send a Request
+        When you type a URL (e.g., www.google.com) in your browser, your device sends a query to your ISP (Internet Service Provider). The ISP communicates with servers that store the website’s data.
+    >Translate the URL
+        The browser converts the website address into a numeric IP address so the Internet knows exactly where to send the request.
+    >Receive Data Packets
+        The server sends the website data in small packets. These packets travel through routers, switches, and other networking devices to reach your device.
+    >Reassemble and Display
+        Your browser reassembles the packets like a puzzle to display the full website.
+
+3.components of Internet
+    >Packets
+        Data sent over the Internet is split into small pieces called packets. Each packet has part of the data and information about where it’s going. 
+        Packets travel through devices like routers and switches and are reassembled at the destination. This method, called packet switching, makes sending large files fast, reliable, and efficient.
+    >Protocols
+        Protocols are rules that tell how data is sent, received, and understood over the Internet. They make sure packets arrive correctly and in order. Common protocols include:
+            .TCP/IP – handles packet addressing and routing
+            .HTTP/HTTPS – for web brows
+            .FTP – for file transfer
+            .SMTP/IMAP/POP3 – for email communication
+    >Example :
+        When you click an image online, it doesn’t load all at once. The image is broken into small packets that travel through the Internet via cables, Wi-Fi, or other connections. 
+        Once all packets reach your device, they are reassembled and the full image appears. Each packet is usually around 1000–1500 bytes depending on the network.
+
+        .Basic Infrastructure of the Internet
+            Connecting two devices over a network can be tricky, so protocols provide standard rules to ensure smooth communication. Key protocols include:
+            .Ethernet – connects devices on the same local network
+            .IP (Internet Protocol) – sends and receives packets between networks
+            .TCP (Transmission Control Protocol) – ensures packets arrive correctly and in order
+            .HTTP (HyperText Transfer Protocol) – formats data for websites and apps
+            .UDP (User Datagram Protocol) – used for faster, real-time data like videos or games
+            .Other protocols handle testing, routing, encryption, and specialized tasks. With these protocols, any device can communicate over the Internet, no matter the connection type.
+
+4.what is Internet Connection Protocols
+    Standardized rules that decide how data is shared, formatted, transmitted, and received over the Internet. For both the sender and receiver must follow the same protocols. Without them, devices would not understand each other.
+      These protocols ensure reliable, secure, and efficient data transfer across networks.
+        .TCP/IP (Transmission Control Protocol / Internet Protocol)
+            .TCP/IP is the core protocol of the Internet.
+            .IP assigns a unique address to each device and routes data to the correct destination.  
+            .TCP breaks data into packets, sends them, and reassembles them in the correct order at the receiver’s end.
+        .FTP (File Transfer Protocol)
+            .FTP is used for transferring files between computers over LAN or WAN.
+            .It uses two connections one for control commands and another for actual data transfer. 
+            .FTP ensures smooth and organized file sharing between systems.
+        .HTTP (HyperText Transfer Protocol)
+            .HTTP is the foundation of the World Wide Web.
+            .It delivers web content such as text, images, and video.
+            .When a user opens a browser, it establishes an HTTP connection with a server.
+            .HTTP works on top of the TCP/IP network.

@@ -113,3 +113,12 @@
             .localField: The field in the primary collection that can be used as a unique identifier in the from collection.
             .foreignField: The field in the from collection that can be used as a unique identifier in the primary colle
             .as: The name of the new field that will contain the matching documents from the from collection.
+
+What is normilaization in mysql?
+    >1NF-
+        .no order data saved
+        .no duplicated values are not allowed 
+        .must present primary key column
+        .reapting group is not allowed
+    >2NF
+        .statisfide the 1NF
