@@ -1,0 +1,17 @@
+1.What is NPM?
+    >npm stands for Node Package Manager.its default package manager for Node.js.it allow developers to share and reuse code. 
+     Think of it as a huge library of pre-build tool that can make your codeing life so much easier.
+
+2.what is Package Manager?
+    >A package manager is basically a tool that helps you manage software libraries or pieces of code,known as "Package."
+
+3.What Package manager does?
+    >install Package
+        .if you need a certaine  feature or tool, the package manager grabs it from an online registry and adds it to your project.
+    >Manage Dependencies
+        .Some package rely on other package to work properly. A package manager ensures all the necessary Dependencies are installed and updated so everything works smoothly together.
+    >Version control
+        .Package are constantly updated, so a package manager keeps track of which version your using.this prevents  your project from  breaking  if an  update introduces change.
+
+3.what is package.json?
+    >one of the core part of the using npm is something called the package.json file.it keep track of all packages your project depends on.

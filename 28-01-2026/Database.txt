@@ -1,0 +1,141 @@
+1.What is Database?
+    >A database is an organized collection of structured information or data, typically stored electronically in a computer system and controlled by a Database Management System (DBMS). 
+    It enables efficient data storage, retrieval, modification, and management, often using SQL for structured data or other formats for NoSQL types.
+
+2.What is DBMS?
+    >Database Management system (DBMS) is software that act as an interface between user,application and database itself, allowing for the efficient creation,retrival,manipulation and management of structured data.
+     it ensure the data intergrity,security and enable concurrent access by multiple users.common example include  MySql,PostgreSql and MongoDB.
+3.What is types of database?
+    >Relational Database
+        Structure data into tables with row and column
+            ex:mysql,oracle,PostgreSql
+    >NoSQL database (Non-Relational Database)
+        Designed for unstructured or semi-structured data, offering flexibility and horizontal scaling (e.g., MongoDB, Cassandra, Redis).
+            .Document Databases: Store data in JSON-like documents (e.g., MongoDB).
+            .Key-Value Stores: Simple, high-performance storage (e.g., Redis).
+            .Graph Databases: Focus on relationships, ideal for social networks (e.g., Neo4j).
+            .Wide-Column Stores: Optimized for queries over large datasets (e.g., HBase).
+    >Cloud Database
+        Operated in a cloud computing environment and offering scalability
+            ex:AWS,GCP,Azure
+    >Object-Oriented Database
+        Store data as objects,similar to object-oriented programming
+    >Time series database
+        optimized for handling timestamped data,crucial for IoT and real-time monitoring
+    >Vector Database
+        Specially designed to handle vector embeddings for AI and machine learnig application.
+    >Hierarchical/Network Database
+        >older models organizing data in tree-like (Hierarchical) or Graph-like(network) structure.
+
+4.What is MySql?
+    >MySQL is a widely used, open-source Relational Database Management System (RDBMS) developed by Oracle Corporation. It uses Structured Query Language (SQL) to manage data in tables, rows, 
+     and columns, providing a fast, reliable, and scalable solution for applications ranging from small projects to large-scale, high-traffic websites. 
+
+5.What is RDBMS?
+    >A Relational Database Management System (RDBMS) is software used to store, manage, query, and retrieve structured data organized into tables with rows and columns. It acts as an interface between users and the database, ensuring data integrity, security, 
+     and consistent access using SQL (Structured Query Language). Common examples include MySQL, PostgreSQL, Oracle, and SQL Server. 
+
+6.Difference between DBMS and RDBMS.
+    +------------------------------------------------------+------------------------------------------------------+
+    |                       DBMS                           |                        RDBMS                         |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Stores data as files                                 | Stores data in tabular form (tables)                 |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Data elements accessed individually                  | Multiple data elements accessed at same time         |
+    +------------------------------------------------------+------------------------------------------------------+
+    | No relationship between data                         | Tables are related to each other                     |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Normalization not present                            | Normalization present                                |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Does not support distributed database                | Supports distributed database                        |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Uses navigational or hierarchical model              | Uses tabular structure (rows & columns)              |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Handles small amount of data                         | Handles large amount of data                         |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Data redundancy is common                            | Redundancy controlled using keys & indexes           |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Used for small organizations                         | Used for large organizations                         |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Does not fully follow Codd’s rules                   | Follows relational (Codd’s) rules                    |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Less security                                        | More security levels                                 |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Single user support                                  | Multi-user support                                   |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Slower for large data                                | Faster data fetching                                 |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Low hardware & software requirements                 | Higher hardware & software requirements              |
+    +------------------------------------------------------+------------------------------------------------------+
+    | Examples: XML, FoxPro, dBase                         | Examples: MySQL, PostgreSQL, Oracle, SQL Server      |
+    +------------------------------------------------------+------------------------------------------------------+
+
+7.What is SQL?
+    >SQL - structured query language for dealing with relational database.
+    SQL is used to insert,delete,update,search in database records.
+
+8.SQL Query's
+    >create database <db name> - this query is used to create the database.
+    >use <db name> - once created the new db use key word to use the db.
+    >drop database <db name> - used to delete the database.
+   >create table <tableName>(
+        id int,
+        name string
+    );   -this is used to create the new table in db.
+    >rename table <current table name> to <new table name> - this is used to rename the table name.
+    >drop table <table name> - this is used to delete/drop the whole table.
+    >alter - this is used to change in column or table.
+        .alter table <table name> add <column name> <datatype> ; - this is used to add new column to table.
+        .alter table <table name> rename column <old column name > to <new column name> - this is used to rename the column name.
+        .alter table <table name> modify column <columnName> <new dataType>; -  this is used to modify the column data type or other properties in column.
+        .alter table <table name> modify column <columnName> <dataType> <locatio count: first or after<columnName>> - this is used to change the location for the column.
+        .alter table <table name> drop column <columnName> - this is used to drop or delete the column in the table.
+    >insert - this query is used to insert the values into the table.
+        .insert into <table name> values("","",""); - this is used to insert the value in table(value must in order in table format).
+        .insert into <table name> values ((<values>),(<values>)); - this is used to inserth multiple data to table.(this also order is must).
+        .insert into <table name> (<order and which values>) values (<values>) - this also used to insert the value in table (it custamized which data can inserted and order also).
+    >select - this is used to retrive the data from the database.
+        .select * from <table name> - this is used to select all columns in the table.
+        .select <columnName,columnName> from <table name> - this is used to select the specified column in the table.
+        .select <columnName> as <new columnName> form <tableName> - this used to select the specified column and change columnName use AS keyword.
+        .select * from <tablename> where <specified condition> - this is used to select specified condition (use = , <,>,<=,>=,!=,logical operator).
+    >update - this is used to update the data in the table row.
+        .update <table name> set <columnName>=<value>,<columnName>=<value> where <specified columnName> = <id> - this is used to update the specfiied row in the table.
+    >delete from <table name> where <condition> - is used to delete the record in the table.
+    >rollback,commit,set autocommit=0;
+        >set autocommit=0; - this should be zero because of once it commit the change can not rollback so its should be in 0.
+        >rollback - if any changed mistakenly use this query to go back.(must be auto commit should be in zero 0).
+        >commit - after the change all then give commit to save all record.
+    >time stamp
+        .current_date() - this is used to get current date only.
+        .now() -this is used to get current time with date
+        .current_time() - this is used to get current time only.
+
+9.What is Primary key?
+    >primary is used to identify the individual row as a unique, primary key should be in unique and not null.
+
+10.What is Foreign Key?
+    >A foreign key is a column or set of columns in one database table that provides a link between data in two tables by referencing the primary key in another table. 
+     It enforces referential integrity, ensuring that values in the child table match valid entries in the parent table, thereby preventing orphan records.
+
+11.joins - is used to combain the two tables.
+    >inner join - it only take common data from two tables.
+    >left join - it take full of left table and common from right table data.
+    >right join - it take full right table and commom from left table date.
+    >select <columnName> from <tablename1> inner join <tablename2> on <table1columnname.id> = <table2columnname.id> - table 1 as consider as left side table.
+    >select <columnName> from <tablename1> left join
+
+12.Aggregate functions
+    .count(<columnName>) - is used to count the number.
+    .max(<columName>) - is used to return the maximum value.
+    .min(<columnName>) - is used to return the minimum value.
+    .avg(<columnName>) - is used to return the average value.
+    .sum(<columnName>) - is used to return  the all the value and return it.
+    .between <columName> <value1> and <value2> - this return the data present in between range.
+    .in (<value1>,<value2>) - this return only present value in bracket.
+
+
+
+
+
+ 
