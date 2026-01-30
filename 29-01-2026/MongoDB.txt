@@ -1,0 +1,61 @@
+LEVEL 0 — Absolute Beginner (Understand Data)
+    >Show all comments.
+        db.comments.find()
+    >Show only comment and likes fields from comments.
+        db.comments.find({},{_id:0,comment:1,likes:1});
+    >Show comments where likes > 5.
+        db.comments.find({likes:{$gt:5}});
+    >Sort comments by likes descending.
+        db.commetns.find().sort({likes:-1});
+    >Limit result to first 3 comments.
+        db.comments.find().limit(3)
+
+🟡 LEVEL 1 — Basic Aggregation Thinking
+    >Count total number of comments.
+        db.comments.aggregate({$count:"comment"})
+    >Count total comments per post.
+        db.comments.aggregate({$group:{_id:"$postId"},total_comments:{$sum:1}});
+    >Count total comments per user.
+        db.comments.aggregate({$group:{_id:"$userId",total_comments:{$sum:1}}});
+    >Find average likes per comment.
+        db.comments.aggregate([{$group:{_id:null,average_likes:{$avg:"$likes"}}},{$project:{_id:0,average_likes:1}}]);
+    >Find maximum likes among comments.
+        db.comments.aggregate([{$group:{_id:null,maximum_like:{$max:"$likes"}}},{$project:{_id:0,maximum_like:1}}]);
+    >Find minimum likes among comments.
+        db.comments.aggregate([{$group:{_id:null,minimum_like:{$min:"$likes"}}},{$project:{_id:0,minimum_like:1}}]);
+    >Get total likes of all comments combined.
+        db.comments.aggregate([{$group:{_id:null,Total_likes:{$sum:"$likes"}}},{$project:{_id:0,Total_likes:1}}]);
+
+🟠 LEVEL 2 — Working with Arrays (Replies)
+    >Count total replies for each comment.
+        db.comments.aggregate([{$project:{_id:1,total_replies:{$size:"$replies"}}}])
+    >Find comments that have no replies.
+        db.comments.aggregate({$match:{replies:{$size:0}}})
+    >Find total number of replies across all comments.
+        db.comments.aggregate([{$unwind:"$replies"},{$group:{_id:null,Total_likes:{$sum:"$replies.likes"}}}])
+    >Find average reply likes.
+        db.comments.aggregate([{$unwind:"$replies"},{$group:{_id:null,average_like:{$avg:"$replies.likes"}}}])
+    >Find reply with maximum likes.
+        db.comments.aggregate([{$unwind:"$replies"},{$group:{_id:null,Max_like:{$max:"$replies.likes"}}},{$project:{_id:0,Max_like:1}}])
+    >Add a new field replyCount using $addFields.
+        db.comments.aggregate({$addFields:{replyCount:{$size:"$replies"}}})
+
+🔵 LEVEL 3 — Joining Collections ($lookup)
+    >Show comments with user name.
+        db.comments.aggregate([{$lookup:{from:"users",localField:"userId",foreignField:"_id",as:"userDetails"}},{$unwind:"$userDetails"},{$project:{_id:0,comment:1,userName:"$userDetails.name"}}])
+    >Show comments with post title.
+        db.comments.aggregate([{$lookup:{from:"posts",localField:"postId",foreignField:"_id",as:"PostDetails"}},{$unwind:"$PostDetails"},{$project:{_id:0,comment:1,title:"$PsotDetails.title"}}])
+    >Show post title + number of comments.
+        db.comments.aggregate([{$group:{_id:"$postId",total_comment:{$sum:1}}},{$lookup:{from:"Posts",localField:"_id",foreignField:"_id",as:"PostDetails"}},{$unwind:"$PostDetails"},{$project:{_id:0,total_comment:1,title:"$PostDetails.title"}}])
+    >Show user name + number of comments they wrote.
+        db.comments.aggregate([{$group:{_id:"$userId",totalComment:{$sum:1}}},{$lookup:{from:"users",localField:"_id",foreignField:"_id",as:"userDetails"}},{$unwind:"$userDetails"},{$project:{_id:0,totalComment:1,Name:"$userDetails.name"}}])
+    >Show posts with total comment likes.
+        db.comments.aggregate([{$group:{_id:"$postId",totalCommentLike:{$sum:1}}},{$lookup:{from:"posts",localField:"_id",foreignField:"_id",as:"postDetails"}},{$unwind:"postDetails"},{$project:{_id:1,title:"$postDetails.title,totalCommentLike:1"}}])
+
+🟣 LEVEL 4 — Intermediate Interview Level
+    >Find most active commenter.
+        db.comments.aggregate([{$group:{_id:"$postId",total_comment:{$sum:1}}},{$lookup:{from:"users",localField:"_id",foreignField:"_id",as:"userDetails"}},{$sort:{total_comment:-1}},{$limit:1},{$unwind:"userDetails"},{$project:{_id:0,Name:"$userDeails.name",total_comment:1}}]);    
+    >Find post with highest total comment likes.
+        db.comments.aggregate([{$group:{_id:"$postId",total_comments:{$sum:"$likes"}}},{$sort:{total_comments:-1}},{$limit:1},{$lookup:{form:"posts",localField:"_id",foreignField:"_id",as:"postDetails"}},{$unwind:"$postDetails"},{$project:{_id:0,title:"$postDetails.title",total_comments:1}}]);
+    >Find top 3 most liked comments.
+        
