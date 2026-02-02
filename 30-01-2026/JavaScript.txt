@@ -1,0 +1,280 @@
+1.What is JavaScript?
+    >JavaScript is a programming language mainly used to make websites interactive and dynamic.
+        >Client side:
+            .On the client side, JavaScript works along with HTML and CSS. 
+            .HTML adds structure to a web page, CSS styles it, and JavaScript brings it to life by allowing users to inte
+             ract with elements on the page, such as actions on clicking buttons, filling out forms, and showing animations. 
+             JavaScript on the client side is directly executed in the user's browser.
+        >server-side:
+            .On the Server side (on Web Servers), JavaScript is used to access databases, file handling, and security features to send responses, to browsers.
+
+2.what is variables?
+    >A variable is like container that holds data that can be resued or updated later in the program.
+     in javascript, variables are declared using the keywords var,let and const.
+
+        1.var
+            The var keyword is used to declare a variable. it has a function-scoped or globally-scopped behaviour.
+            ex:
+                fuction-scopped
+                    if(true){
+                        var x=10;
+                    }
+                    console.log(x) //output:10
+                because it act global scoped value.
+
+                var x=10;
+                var x=15; 
+                 its also possible its allow the re-declared.
+        2.let
+            the let keyword is introduced i  ES6, has block scope and cannot be re-declared in the same scope.
+            ex:
+                let n = 10 ; 
+                n=20; // this can be allowed because only update the value
+                let n=15; // this can not be allowed re-declare in same name.
+                block scope:
+                    if(true){
+
+                        let x = 10;
+                    }
+                    console.log(x) // error
+        3.const
+            the const keyword declares variable that cannot be reassigned.its block scoped as well.
+            ex:
+                const n =100;
+                n=200//throw error 
+
+3.Data types?
+    >a data type tells javascript what kind of value a variable is storing.
+        there are two types:
+            1.Primitive data type:
+                .Number - represent the numberic values(integer and decimals)
+                .String - represent the enclosed in single or double quotes.
+                .Boolean -represent the logical value (true or false).
+                .Undefined - A variable that has been declared but not assigned a value
+                .Null - represent an intentional absence of any value.
+                .Symbol - represent the unique and immutable values, often used as object.
+                .bigInt - represent integer larger then Number.Max_safe_integer.
+            2.Non-primitive data types:
+                .object - represent key-value pairs 
+                .array - represent an ordered list of values.
+                .function - represent reusable block of code.
+            
+4.Javascript Operators:
+    .Javascript operators are sysmbol or keywords used to perform operations on values and variables.
+     they are the building block of javascript expressions and can manipulate data in various ways.
+        >Arithmetic operator:
+            const sum = 5+5;//addition
+            const diff = 10-2;//subtraction
+            const p=4*4;//multiplication
+            const q=8/4;//division
+        console.log(sum,diff,p,q);
+    
+        >Assignment operator:
+            let n=10;
+            n+=5;//add and assign
+            n*=5;//multiply and assign
+            n-=5;//subtract and assign
+            n/=5;//divide and assign
+        >Comparison operator:
+            (>) check if the left value is greater than the right.
+            (===) checks for strict equality(both type and value)
+            (<) check if the left value is less than the right.
+            (<=) check if the left value is less than or equal to the right.
+            (>=) check if the left value is greater then or equal to the right.
+            (!=) check if the left value is not equal to right.
+        >Logical Operator:
+            && - return true if both operands are true.
+            || - return true if at least one operand is true.
+            ! - negates the boolean value.
+        >bitwise operator:
+            & - perform a bitwise AND.
+            | - perform a bitwise OR.
+            ^ - perform a bitwise XOR.
+            ~ - perform a bitwise NOT.
+        >Ternary Operator:
+            .it is shorthand for conditional statement.it takes three operands.
+            .const age = 18;
+            const result = age >= 18 ? "Adult" : "Minor";
+            console.log(result) // output:adult.
+
+            .(condition ? expression1 : expression2)
+        >Relational Operator:
+            (in) - checks if a property exists in an object.
+            (instanceof) - checks if an object is an instance of a constructor.
+
+5.Control statements:
+    .Javascript control statement is used to control the execution of a program based on a specific condition.
+     if the condition meets then a particular block of action will be executed otherwise it will execute another block of action that satisfies that particular condition.
+        Types of control statement in javascript:
+            1.conditional Statement:
+                These statement are used for decision-making.
+                    types:
+                        1.if statement:
+                            if(condition){
+                                //if condition true block of code is excuted.
+                            }
+                        2.if-Else Statement:
+                            if(condition){
+                                //if condition is true if block executed.
+                            }
+                            else{
+                                // if condition is false then else block is executed.
+                            }
+                        3.switch statement:
+                            switch(expression){
+                                case <value1>:
+                                    statement1;
+                                    break;
+                                case <value2>:
+                                    statement2;
+                                    break;
+                                default:
+                                    statement default;
+                            }
+                2.iterative statement:
+                    This is a statement that iterates repeatedly until a condition is met.
+                        Types:
+                            1.For loop:(when its know the how many times iteration want )
+                                for(intailization;condition;increment/decrement){
+                                    statement
+                                }
+                            2.while loop:(when its dont know the iteration count)
+                                entry control loop 
+                                instilization 
+                                int i=0;
+                                while(condition){
+                                    statement;
+                                    increment/decrement;
+                                }
+                            3.do-while loop:(when its want to execute atleast once go to do while)
+                                exit control loop.
+                                intailization;
+                                do{
+                                    statement;
+                                    increment/decrement;
+                                }while(condition);
+            
+6.Array
+    An array is a data structure used to store multiple values in a single variable.
+        let a = [10,"keerthi",{age:24},[10,20,30]];
+
+        1.Adding elements to the array:
+            push() - this method is used to add the element to the end of the array.
+            ushift() - this method is used to add the element to the starting of the array.
+            
+            let a = ["HTML","CSS","JS"];
+            a.push("REACT JS");
+            a.unshift("NODE JS");
+            console.log(a) // o/p : (NODE JS ,HTML,CSS,JS,REACT JS)
+        2.Removing Element form the array:
+            pop() - this method is used to remove an element from the last index of the array.
+            shift() - this method is used to remove the element from the first index of the array.
+            splice() - this method is used to remove or replace the element from the array.
+            let a = ["HTML","CSS","JS","REACT","NODE","ANGULAR"];
+            a.pop();
+            a.shift();
+            a.splice(2,2);
+            console.log(a);//o/p:css,js,node;
+        3.concat the two array:
+            let a = [1,2,3,4,5];
+            let b=[6,7,8,9,10];
+            let c = a.concat(b);
+            console.log(c);
+        4.join method:
+            let a = ["html","css","react",java]
+            console.log(a.join('|')) o/p html|css|react|java  
+        5.slice method:
+            let a = ["html","css","react","java"]
+            let b = a.slice(1,2)  o/p:css 
+        6.map method:Transform each element
+            let a1 = [1, 2, 3, 4, 5]
+            // let num =4
+            let a2 = a1.map((a) => a*2 )
+            console.log(a2)  //o/p:[ 2, 4, 6, 8, 10 ]   
+        7.filter method:Filter elements
+            let a1 = [1, 2, 3, 4, 5]
+            // let num =4
+            let a2 = a1.filter((a) => a>3 )
+            console.log(a2)  //o/p:[ 4,5]
+        8.reduce method:Reduce to single value
+            let a1 = [1, 2, 3, 4, 5]
+            // let num =4
+            let a2 = a1.reduce((a,b) => (a+b),0 )
+            console.log(a2)  //o/p:15
+        9.find method:Returns first matching element
+            let a1 = [1, 2, 3, 4, 5]
+            // let num =4
+            let a2 = a1.find((a) => a>2 )
+            console.log(a2)  //o/p:3 
+        10.includes method: – Checks if value exists                        
+            let a1 = [1, 2, 3, 4, 5]
+            console.log(a1.includes(2))  //o/p:true 
+
+7.Functions:
+    Functions in javascript are reusable block of code designed to perform specific tasks, They allow you to organize,reuse,and modularize code.
+    It can take inputs,perform action and retrun outputs.
+    function greet(name){ // parameter 
+        console.log("hello"+name);
+    }
+    greet("Keerthivasan" // argument passed)
+
+    type of function:
+        1.Name function
+            function greet(){
+                retrun "hello";
+            }
+            console.log(greet());
+            Features:
+                .Has a name (greet)
+                .Hoisted (can call before declaration)
+                .Reusable anywhere in its scope
+
+        2.Anonymous function:
+            const hello = function(){
+                return "hello";
+            }
+            console.log(hello());
+        3.Function Expression:
+            const add=function(a,b){
+                return a+b;
+            }
+            console.log(add(2,3));
+            .Stored in variable
+            .Not hoisted like declaration
+            .Can be anonymous or named
+
+        4.Arrow Function:
+            const hello = ()=>{
+                return "hello";
+            }
+            console.log(hello());
+            .Short syntax
+            .No own this
+            .Not hoisted like normal functions
+        5.callback function:
+            function num(n,callback){
+                return callback(n);
+            }
+            const  double = (n)=>n*2;
+            console.log(num(5,double));
+
+8.Asynchronous javascript:
+    Asynchronous JavaScript allows long-running tasks to run in the background without blocking the main thread.
+        There are several methods that can be used to perform asynchronous javascript tasks, which are listed below:
+            1.using callback:
+                Callbacks are functions passed as arguments to be executed after an asynchronous operation completes. 
+                 They are used in asynchronous JavaScript to handle responses and ensure non-blocking execution,
+                
+            2.using Promises:
+                Promises are objects representing the eventual completion (or failure) of an asynchronous operation, 
+                providing better handling of asynchronous code with .then() and .catch().
+            3.Async and Await
+                Async/Await in JavaScript allows you to write asynchronous code in a clean, synchronous-like manner, making it easier to read, understand, and maintain while working with promises.
+                    .async functions always return a Promise.
+                    .await pauses execution until the Promise is resolved or rejected.
+                    .Improves readability compared to .then() and .catch() chaining.
+                    .Makes error handling simpler using try...catch.
+                    .Ideal for managing complex asynchronous flows in a structured way.
+
+
+
