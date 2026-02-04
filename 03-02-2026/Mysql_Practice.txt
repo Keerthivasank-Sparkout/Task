@@ -100,4 +100,3 @@ Rollback if any salary exceeds 90,000.
 2️⃣ Find employee working on maximum projects.
 3️⃣ Find department with highest average salary.
 4️⃣ Get project utilization percentage (hours / budget logic).
-5️⃣ Detect duplicate emails (even though unique constraint exists — simulate case).
