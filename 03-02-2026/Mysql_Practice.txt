@@ -1,0 +1,103 @@
+🟢 LEVEL 1 – Basics (SELECT, WHERE, ORDER BY, LIMIT)
+1️⃣ Get all employees.
+    select * from employees
+2️⃣ Show only employee name and salary.
+    select emp_name , salary from employees
+3️⃣ Find employees earning more than 60,000.
+    select * from employees where salary > 60000
+4️⃣ Get employees hired after 2021.
+    select * from employees where hire_date > '2021-01-01'
+5️⃣ Sort employees by salary (highest first).
+    select * from employees order by salary desc
+6️⃣ Show top 3 highest paid employees.
+    select * from employees order by salary desc limit 3
+7️⃣ Find employees from department 2.
+    select * from employees where dept_id = 2
+8️⃣ Find employees whose name starts with 'A'.
+    select * from employees where emp_name like 'A%'
+9️⃣ Find employees with salary between 50,000 and 80,000.
+    select * from employees where salary between 50000 and 80000
+🔟 Count total number of employees.
+    select count(*) as total_employees from employees
+
+🟡 LEVEL 2 – Aggregates & GROUP BY
+1️⃣ Find total salary paid by company.
+    select sum(salary) as total_salary_paid from employees
+2️⃣ Find average salary.
+    select avg(salary) as total_average_salary from employees
+3️⃣ Find department-wise average salary.
+    select dept_id, avg(salary) as average_salary from employees group by dept_id
+4️⃣ Find highest salary in each department.
+    select dept_id, max(salary) as Higest_salary from employees group by dept_id
+5️⃣ Count employees in each department.
+    select dept_id , count(*) as Employee_count from employees group by dept_id
+6️⃣ Show departments having more than 2 employees. (Use HAVING)
+    select dept_id ,count(*) as Employee_count from employees group by dept_id having count(*) > 2
+7️⃣ Find total hours worked per project.
+    select project_id,sum(hours_worked) as Working_hours_per_Project from employee_projects group by project_id
+8️⃣ Find project with highest total hours worked.
+    select project_id,sum(hours_worked) as Working_hours_per_Project from employee_projects group by project_id order by Working_hours_per_Project desc limit 1
+
+
+🟠 LEVEL 3 – JOINS (Interview Favourite 😈)
+1️⃣ Show employee name with department name.
+    select e.emp_name,d.dept_name from employees e inner join departments d on d.dept_id = e.dept_id
+2️⃣ List employees working on "Mobile App".
+    select emp_id,emp_name from employees where emp_id in (select ep.emp_id from employee_projects ep inner join projects p on p.project_id = ep.project_id where p.project_name = "Mobile App")
+3️⃣ Show employee name, project name, hours worked.
+    select e.emp_name , p.project_name, ep.hours_worked from employees e inner join employee_projects ep on ep.emp_id = e.emp_id inner join projects p on p.project_id = ep.project_id
+4️⃣ Find employees not assigned to any project.
+    select * from employees e left join employee_projects ep on e.emp_id = ep.emp_id where ep.emp_id is null 
+5️⃣ Find departments with no employees.
+    select dept_name from departments d left join employees e on d.dept_id = e.dept_id where e.dept_id is null
+6️⃣ Show manager name with employee name (Self Join).
+    select e.emp_name as Employe_name,m.emp_name as Manager_name from employees e left join employees m on e.manager_id = m.emp_id where e.Manager_name is not null
+7️⃣ Show employees earning more than their manager.
+select e.emp_name as Employe_name,m.emp_name as Manager_name from employees e inner join employees m on e.manager_id = m.emp_id where e.salary > m.salary
+
+
+🔵 LEVEL 4 – Subqueries
+1️⃣ Find employee with highest salary.
+    select emp_id,emp_name,salary from employees where salary = (select max(salary) from employees)
+2️⃣ Find 2nd highest salary.
+    select emp_id,emp_name,salary from employees where salary = (select salary from employees order by salary desc limit 1 offset 1)
+3️⃣ Find employees earning above company average salary.
+    select emp_id,emp_name,salary from employees where salary > (select avg(salary) from employees)
+4️⃣ Find employees earning above department average.
+    select e.emp_id,e.emp_name,e.salary from employees e where e.salary > (select avg(salary) from employees where dept_id=e.dept_id)
+5️⃣ Find projects where total hours worked > average hours of all projects.
+    select project_id,sum(hours_worked) as total_hours from employee_projects group by project_id having sum(hours_worked)>(select avg(total_hours) from (select sum(hours_worked) as total_hours from employee_projects group by project_id )as project_total) 
+
+🟣 LEVEL 5 – Window Functions (Advanced 🔥)
+1️⃣ Rank employees by salary.
+2️⃣ Find top 2 highest paid employees in each department.
+3️⃣ Show salary difference from previous hired employee (use LAG).
+4️⃣ Show running total of salaries ordered by hire date.
+
+
+🔴 LEVEL 6 – Indexing & Performance Thinking
+
+(Conceptual + Practical)
+1️⃣ Which column should be indexed for faster employee search?
+2️⃣ Write query to check execution plan using EXPLAIN.
+3️⃣ Add index on email column.
+4️⃣ Add composite index for dept_id + salary.
+
+🟤 LEVEL 7 – Transactions
+Simulate:
+1️⃣ Transfer employee from Sales to Marketing (with transaction).
+2️⃣ Increase salary of all Engineering employees by 10%.
+Rollback if any salary exceeds 90,000.
+
+⚫ LEVEL 8 – Stored Procedures & Triggers
+1️⃣ Create procedure to increase salary by given percentage.
+2️⃣ Create procedure to get employees by department.
+3️⃣ Create trigger to prevent salary < 30,000.
+4️⃣ Create trigger to log salary changes.
+
+🟠 BONUS – Real Interview Scenarios
+1️⃣ Find employees hired in last 2 years.
+2️⃣ Find employee working on maximum projects.
+3️⃣ Find department with highest average salary.
+4️⃣ Get project utilization percentage (hours / budget logic).
+5️⃣ Detect duplicate emails (even though unique constraint exists — simulate case).
