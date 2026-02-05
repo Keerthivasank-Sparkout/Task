@@ -1,0 +1,19 @@
+1.what is shallow copy?
+    A shallow copy copies only the first level of an object, while nested objects remain shared by reference.
+2.what is deep copy?
+    A deep copy creates a fully independent copy of an object, including all nested objects, so changes in the copied object do not affect the original.
+3.what is hoisting?
+    Hoisting is JavaScript’s default behavior of moving declarations to the top of their scope during the creation phase before code execution.
+    +------------------------------+----------+----------------------------------+-----------------------------------------------+
+    | Keyword / Type               | Hoisted  | Accessible Before Initialization | What Happens Internally                       |
+    +------------------------------+----------+----------------------------------+-----------------------------------------------+
+    | var                          | Yes      | Yes (undefined)                  | Declared and initialized with undefined       |
+    | let                          | Yes      | No (ReferenceError - TDZ)        | Declared but not initialized (TDZ applies)    |
+    | const                        | Yes      | No (ReferenceError - TDZ)        | Declared but not initialized (TDZ applies)    |
+    | Function Declaration         | Yes      | Yes                              | Entire function is hoisted                    |
+    | Function Expression (var)    | Yes      | No (TypeError)                   | Variable hoisted as undefined                 |
+    | Arrow Function (var)         | Yes      | No (TypeError)                   | Variable hoisted as undefined                 |
+    +------------------------------+----------+----------------------------------+-----------------------------------------------+
+        The Temporal Dead Zone (TDZ) is the period between the hoisting of a let or const variable and its initialization, during which accessing the variable results in a ReferenceError.
+
+
