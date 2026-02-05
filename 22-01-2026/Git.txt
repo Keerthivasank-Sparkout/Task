@@ -22,7 +22,6 @@
 					git commit -a -m "Update all tracked files"
 					.Automatically stages modified and deleted tracked files before committing.
 					.Note: Does not include untracked files-you still need git add for those.
-
 				3. Amend Last Commit
 					git commit --amend -m "Updated commit message"
 					.Modify the last commit’s message or add new staged changes.

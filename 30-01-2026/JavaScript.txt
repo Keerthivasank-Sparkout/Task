@@ -258,7 +258,38 @@
             const  double = (n)=>n*2;
             console.log(num(5,double));
 
-8.Asynchronous javascript:
+8.Dom 
+    The DOM is a tree-like representation of an HTML document that allows JavaScript to dynamically access and manipulate web page content.
+        DOM API:
+            The DOM API (Application Programming Interface) is a set of Methods and Properties that allow JavaScript to change the content, structure, and style of any HTML elements.
+                HTML DOM API Abilities
+                    The DOM API provides us with the ability to:
+                        .Find and select elements
+                        .Change element content and attributes
+                        .Add, remove, or modify elements
+                        .Change CSS styles
+                        .Add event listeners to react to user input
+                    Selecting HTML Elements
+                        document.getElementsByTagName(name)	- Find elements by tag name
+                        document.getElementsByClassName(name) - Find elements by class name
+                        document.querySelector(selector) - Find the first element that matches a CSS selector
+                        document.querySelectorAll(selector) - Find all elements that match a CSS selector
+                    Accessing Element Content
+                        element.innerHTML	- The HTML content of an element
+                        element.textContent	- The text content of an element
+                    Accessing Element Attributes
+                        element.attribute - Change the attribute value of an HTML element
+                        element.style.property - The style of an HTML element
+                    Changing Element Attributes
+                        element.setAttribute() - Create or set a new attribute
+                    Manipulating Structure
+                        document.createElement() - Creates a new HTML element
+                        document.removeChild() - Remove an HTML element
+                        document.appendChild() - Add an HTML element
+                        document.replaceChild() - Replace an HTML element
+                    Adding Event Handlers
+                        document.getElementById(id).onclick = function(){code}	Adding event handler code to an onclick event
+9.Asynchronous javascript:
     Asynchronous JavaScript allows long-running tasks to run in the background without blocking the main thread.
         There are several methods that can be used to perform asynchronous javascript tasks, which are listed below:
             1.using callback:
