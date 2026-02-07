@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<!-- 
+7️⃣ Loan Approval System
+
+loanEligibility(creditScore, salary, existingLoan)
+
+Conditions:
+
+creditScore < 600 → Reject
+
+salary < 25000 → Reject
+
+existingLoan true AND salary < 50000 → Reject
+
+Else → Approved
+-->
+
+<body class="bg-gray-200">
+    <div class="min-h-screen p-5 flex justify-center items-center">
+        <div class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-8">
+            <h1 class="text-2xl font-serif text-black font-bold text-center m-3">
+                Loan Eligibility Checker
+            </h1>
+            <form id="form" class="space-y-6">
+                <div>
+                    <label for="name" class="block font-semibold mb-1">Name</label>
+                    <input type="text" name="name" id="name" required
+                        class="p-2 border border-gray-200 rounded-lg w-full focus:border-blue-300">
+                        
+                </div>
+                <div>
+                    <label for="salary" class="block font-semibold mb-1">Salary</label>
+                    <input type="number" name="salary" id="salary" required
+                        class="p-2 border border-gray-200 rounded-lg w-full focus:border-blue-300">
+                </div>
+                <div>
+                    <label for="cscore" class="block font-semibold mb-1">Credit Score</label>
+                    <input type="number" name="cscore" id="cscore" required
+                        class="p-2 border border-gray-200 rounded-lg w-full focus:border-blue-300">
+                </div>
+                <div>
+                    <label for="eloan" class="block font-semibold mb-1">Existing Loan</label>
+                    <label for="eloan">
+                        <input type="radio" name="eloan" value="Yes" required>
+                        Yes
+                    </label>
+                    <label for="eloan">
+                        <input type="radio" name="eloan" value="No" required>
+                        No
+                    </label>
+                </div>
+                <div class="text-center">
+                    <button type="submit" id="btn"
+                        class="rounded-xl border border-black bg-blue-500 text-white font-bold px-6 py-2 hover:bg-blue-700">Submit</button>
+                </div>
+            </form>
+            <div class="mt-10 w-full">
+                <p id="result" class="mt-4 text-center font-semibold p-3 rounded-lg"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 7️⃣ Loan Approval System
+
+        // loanEligibility(creditScore, salary, existingLoan)
+
+        // Conditions:
+
+        // creditScore < 600 → Reject
+
+        // salary < 25000 → Reject
+
+        // existingLoan true AND salary < 50000 → Reject
+
+        // Else → Approved
+        const form = document.getElementById("form");
+        const cname = document.getElementById("name");
+        const csalary = document.getElementById("salary");
+        const cscore = document.getElementById("cscore");
+        const tableBody = document.querySelector("#dataTable tbody");
+        const result = document.getElementById("result");
+
+        // this btn is used to check the differece btw target and currentTraget for reference.
+
+        // const btn=document.getElementById("btn")
+        //  btn.addEventListener("click",(event)=>{
+        //     console.log(event.target)
+        //     console.log(event.currentTarget)
+        //  })
+
+        form.addEventListener("submit", handleSubmit);
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            let name = cname.value;
+            let salary = csalary.value;
+            let score = cscore.value;
+            let loan = document.querySelector('input[name="eloan"]:checked')?.value;
+            console.log(name + ":" + salary + ":" + loan + ":" + score)
+            let res = loanEligibility(salary, score, loan);
+            let status;
+            if (res) {
+                result.classList.remove("border", "border-red-500", "text-red-600");
+                result.classList.add("border", "border-green-500", "text-green-600");
+                result.textContent = name + ",You're Eligible For Loan";
+
+            } else {
+                result.classList.remove("border", "border-green-500", "text-green-600");
+                result.classList.add("border", "border-red-500", "text-red-600");
+                result.textContent = name + ",Sorry! You're Not Eligible For Loan";
+            }
+            form.reset()
+        }
+        function loanEligibility(salary, score, loan) {
+            let status = true;
+            if (score < 600) {
+                status = false;
+                return status;
+            }
+            else if (salary < 25000) {
+                status = false;
+                return status;
+            }
+            else if (loan === "Yes" && salary < 50000) {
+                status = false;
+                return status;
+            }
+            return status;
+        }
+    </script>
+</body>
+
+</html>
+
+

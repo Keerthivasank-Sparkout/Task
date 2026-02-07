@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce</title>
+    <link href="output.css" rel="stylesheet">
+
+</head>
+<!-- 
+1️⃣ E-Commerce Discount System
+
+Write a function:
+
+calculateFinalPrice(price, userType, isFestival)
+
+Rules:
+
+If userType is "premium" → 20% discount
+
+If "regular" → 10% discount
+
+If festival → extra 5% discount
+
+If price > 10000 → additional 3% discount
+
+Discounts stack
+
+👉 Return final price after all conditions.
+-->
+
+<body class="bg-gray-100">
+
+    <div class="min-h-screen flex items-center justify-center p-5">
+        <div class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-8">
+            <h1 class="text-3xl font-bold text-center text-purple-900 mb-8">
+                Billing Software
+            </h1>
+            <form id="form" class="space-y-6">
+                <div>
+                    <label for="name" class="block font-semibold mb-1">
+                        Customer Name
+                    </label>
+                    <input type="text" id="name" name="name"
+                        class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <div>
+                    <label for="price" class="block font-semibold mb-1">
+                        Price
+                    </label>
+                    <input type="number" id="price" name="price"
+                        class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <div>
+                    <label for="price" class="block font-semibold ">
+                        <input type="checkbox" id="isFestival" name="isFestival">
+                        isFestival
+                    </label>
+
+                </div>
+                <div>
+                    <label for="Ctype" class="block font-semibold mb-1">
+                        Customer Type
+                    </label>
+                    <select id="Ctype" name="Ctype"
+                        class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option disabled selected>Select Customer Type</option>
+                        <option value="Premium">Premium</option>
+                        <option value="Regular">Regular</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button type="submit"
+                        class="bg-purple-900 text-white px-6 py-2 rounded-lg font-bold hover:bg-purple-800">
+                        Submit
+                    </button>
+                </div>
+
+            </form>
+            <div class="mt-10 overflow-x-auto">
+                <table id="dataTable" class="w-full border-collapse border border-gray-300 text-center">
+                    <thead class="bg-purple-900 text-white">
+                        <tr>
+                            <th class="border border-gray-300 p-2">Name</th>
+                            <th class="border border-gray-300 p-2">Price</th>
+                            <th class="border border-gray-300 p-2">Customer Type</th>
+                            <th class="border border-gray-300 p-2">Final Price</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-gray-50">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("form");
+        const cname = document.getElementById("name");
+        const ctype = document.getElementById("Ctype");
+        const price = document.getElementById("price");
+        const isFestival = document.getElementById("isFestival");
+        const tableBody = document.getElementById("dataTable"); 
+
+        // 1️⃣ E-Commerce Discount System
+
+        // Write a function:
+
+        // calculateFinalPrice(price, userType, isFestival)
+
+        // Rules:
+
+        // If userType is "premium" → 20% discount
+
+        // If "regular" → 10% discount
+
+        // If festival → extra 5% discount
+
+        // If price > 10000 → additional 3% discount
+
+        // Discounts stack
+
+        // 👉 Return final price after all conditions.
+
+        form.addEventListener("submit", handleSubmit);
+
+        function handleSubmit(e) {
+            e.preventDefault()
+            let name = cname.value.trim();
+            let rate = price.value;
+            let festival = isFestival.checked;
+            let type = ctype.value;
+            console.log(name + ":" + rate + ":" + festival + ":" + type)
+            let finalPrice = calculateFinalPrice(rate, type, festival);
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${name}</td>
+                <td>${rate}</td>
+                <td>${type}</td>
+                <td>${finalPrice}</td>`;
+            tableBody.appendChild(newRow);
+            form.reset();
+        }
+        function calculateFinalPrice(price, type, festival) {
+            console.log("price calculation doing...")
+            let discount = 0;
+            if (type === "Premium") {
+                discount += 0.2 * price;
+            }
+            else if (type === "Regular") {
+                discount += 0.1 * price;
+            }
+            if (festival) {
+                discount += 0.05 * price;
+            }
+            if (price > 10000) {
+                discount += 0.03 * price;
+            }
+
+            return price - discount;
+
+        }
+    </script>
+
+</body>
+
+</html>

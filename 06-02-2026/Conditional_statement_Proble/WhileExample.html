@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body >
+    <input type="text" id="passwordField" placeholder="Enter password..." >
+
+    <p id="message" style="color: red;">Password too weak!</p>
+
+    <button id="submitBtn" disabled>Submit</button>
+
+    <script>
+        const passwordInput = document.getElementById('passwordField');
+        const message = document.getElementById('message');
+        const submitBtn = document.getElementById('submitBtn');
+        passwordInput.addEventListener('input', () => {
+            let password = passwordInput.value;
+
+            const isTooShort = password.length < 8;
+            const hasNoNumbers = !/\d/.test(password);
+            if (isTooShort || hasNoNumbers) {
+                submitBtn.disabled = true;
+                message.textContent = "Keep typing... needs 8 chars and a number.";
+                message.style.color = "red";
+            } else {
+                submitBtn.disabled = false;
+                message.textContent = "Strong password! You can submit.";
+                message.style.color = "green";
+            }
+        });
+    </script>
+</body>
+</html>
