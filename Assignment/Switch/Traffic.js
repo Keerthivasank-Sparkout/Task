@@ -1,7 +1,7 @@
 function trafficLight(currentColor, action) {
     //first switch is used to find the next action.
     switch(action) {
-        case "next": //if user ask next then outpul will be find the which ligh will blow next.
+        case "next": //if user ask next then outpul will be find the which light will blow next.
             switch(currentColor) {
                 case "red": // if current red means next signal is green
                     return "green";

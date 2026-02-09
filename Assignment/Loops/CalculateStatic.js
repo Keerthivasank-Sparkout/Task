@@ -15,6 +15,7 @@ function calculateStats(arr){
         }
     }
     mean = mean / arr.length; // after sum all the element divide by length of the array.
+    let range = max - min; // difference bw max and min is range
     for (let i = 0; i < arr.length; i++) {
         let count = 0;
         let alreadyChecked = false;
@@ -51,7 +52,6 @@ function calculateStats(arr){
     } else {
         median = sorted[(sorted.length - 1) / 2];
     }
-    let range = max - min; // difference bw max and min is range
     return {
         mean: mean,
         median: median,
