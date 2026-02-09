@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Table</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+<h2>Product List</h2>
+<table border="1" id="productTable">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+</table>
+<script>
+    let products = [
+        {name: "Laptop", price: 50000},
+        {name: "Mouse", price: 500},
+        {name: "Phone", price: 15000},
+        {name: "Keyboard", price: 800}
+    ];
+    let table = document.getElementById("productTable");
+    for(let i = 0; i < products.length; i++){
+        let row = document.createElement("tr");
+        if(products[i].price > 1000){
+            row.classList.add("highlight");
+        }
+        let nameCell = document.createElement("td");
+        nameCell.textContent = products[i].name;
+        let priceCell = document.createElement("td");
+        priceCell.textContent = products[i].price;
+        row.appendChild(nameCell);
+        row.appendChild(priceCell);
+        table.appendChild(row);
+    }
+</script>
+
+</body>
+</html>

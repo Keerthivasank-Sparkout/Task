@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown</title>
+</head>
+<body>
+
+    <select id="countrySelect">
+        <option value="">Select Country</option>
+        <option>India</option>
+        <option>USA</option>
+        <option>Canada</option>
+    </select>
+
+    <p id="result"></p>
+
+    <script>
+        let select = document.getElementById("countrySelect");
+        let result = document.getElementById("result");
+        select.addEventListener("change", function () {
+            result.textContent = "Selected: " + select.value;
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarkCalci</title>
+</head>
+<body>
+    <input type="number" id="marks1" placeholder="Marks 1">
+    <input type="number" id="marks2" placeholder="Marks 2">
+    <button onclick="checkResult()">Check</button>
+    <p id="output"></p>
+    <script>
+        function checkResult() {
+            let m1 = Number(document.getElementById("marks1").value);
+            let m2 = Number(document.getElementById("marks2").value);
+            let total = m1 + m2;
+            let result = total >= 70 ? "Pass" : "Fail";
+            document.getElementById("output").textContent =
+                "Total: " + total + " - " + result;
+        }
+    </script>
+</body>
+
+</html>

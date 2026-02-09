@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers Greater Than 10</title>
+</head>
+
+<body>
+
+    <p id="countResult"></p>
+
+    <script>
+        let numbers = [10, -5, 3, -8, 0, 7, -2];
+        let positive = 0;
+        let negative = 0;
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i] > 0) {
+                positive++;
+            }
+            else if (numbers[i] < 0) {
+                negative++;
+            }
+        }
+        document.getElementById("countResult").textContent =
+            "Positive: " + positive + " | Negative: " + negative;
+    </script>
+
+</body>
+
+</html>
