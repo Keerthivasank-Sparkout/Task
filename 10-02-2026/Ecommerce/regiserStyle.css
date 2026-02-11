@@ -1,0 +1,120 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+.main{
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(218, 218, 218);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.register-container{
+    width: 25%;
+    height: 550px;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px black;
+}
+.header{
+    height: 50px;
+    padding-left: 30px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.form-control{
+    padding-left: 30px;
+    margin-top: 25px;
+}
+.form-input label{
+    margin: 10px 0px 5px 0px;
+    display: block;
+}
+.form-input input{
+    width: 290px;
+    height: 30px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+#btn{
+    margin-top: 10px;
+    width: 300px;
+    height: 40px;
+    border: 1px solid gray;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: 500;
+}
+#btn:hover{
+    background-color: orange;
+    font-weight: bolder;
+    box-shadow: 0px 0px 5px black;
+}
+.logo{
+    width: 47px;
+    height: 43px;
+    border: none;
+    border-radius: 5px;
+    background-color: orange;
+    text-align: center;
+}
+.logo-container{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position:absolute;
+    left: 15px;
+    top: 15px;
+}
+.logo-container span{
+    font-size: 35px;
+    font-weight: 800;
+    color: orange;
+}
+.logo-container p{
+    font-size: 30px;
+    font-weight: bolder;
+}
+.form-input small{
+    display: block;
+}
+#name.ok{
+    border: 1px solid green;
+}
+#email.ok {
+    border: 1px solid green;
+}
+#password.ok {
+    border: 1px solid green;
+}
+#cpassword.ok {
+    border: 1px solid green;
+}
+#mobileNo.ok {
+    border: 1px solid green;
+}
+
+#name.error {
+    border: 1px solid red;
+}
+#password.error {
+    border: 1px solid red;
+}
+#cpassword.error {
+    border: 1px solid red;
+}
+#email.error {
+    border: 1px solid red;
+}
+#nameError,#passError, #cpassError,#emailError,#mobileError{
+    font-size: 10px;
+    padding-left: 5px;
+    color: red;
+}
+

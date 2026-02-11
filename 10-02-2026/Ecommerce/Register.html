@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="icon" href="assets/shape-17.png">
+    <link rel="stylesheet" href="regiserStyle.css">
+</head>
+<body>
+    <div class="main">
+        <div class="register-container">
+            <div class="header">
+                <p>Welcome to Ulock</p>
+            </div>
+            <form id="form">
+                <div class="form-control">
+                    <div class="form-input">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" placeholder="Enter name">
+                        <small id="nameError"></small>
+                    </div>
+                    <div class="form-input">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" placeholder="Enter email">
+                        <small id="emailError"></small>
+                    </div>
+                    <div class="form-input">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="Enter password">
+                        <small id="passError"></small>
+                    </div>
+                    <div class="form-input">
+                        <label for="cpassword">Confirm Password</label>
+                        <input type="password" name="cpassword" id="cpassword" placeholder="Re-enter password">
+                        <small id="cpassError"></small>
+                    </div>
+                    <div class="form-input">
+                        <label for="moblieNo">Moble number</label>
+                        <input type="number" name="mobileNo" id="mobileNo" placeholder="Mobile number">
+                        <small id="mobileError"></small>
+                    </div>
+                    <button id="btn" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+                <div class="logo-container">
+            <div class="logo">
+                <img src="assets/shape-17.png" alt="">
+            </div>
+            <p><span>U</span>lock</p>
+        </div>
+    </div>
+    <script src="RegisterScript.js"></script>
+</body>
+</html>
