@@ -1,2 +1,6 @@
 const name=["keerthi","vasan","dhivin","varun"];
-module.exports={name}; // used to 
+
+function sayHello(name){
+    return `${name} Hello!`
+}
+module.exports={name,sayHello}; // used to 
