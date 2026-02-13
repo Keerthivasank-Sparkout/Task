@@ -1,0 +1,65 @@
+1.error
+    Error is an extension of the Error object in Javascript. The error can be constructed and thrown or passed to some function. Let’s check out some examples:
+        throw new Error('bad request'); // throwing new error
+        callback_function(new Error('connectivity issue')); // passing error as an argument
+    While creating an error, we need to pass a human-readable string as an argument to understand what went wrong when our program is working incorrectly. In other words, we are creating an object by passing the string to the Error constructor.
+    You also need to know that errors and exceptions are different in JavaScript, particularly Node.js. The errors are the instances of an Error class, and when you throw an error, it becomes an exception.
+    Humans do not cause all errors. There are two types of errors, programmer and operational. We use the phrase “error” to describe both, but they are quite different in reality because of their root causes. Let’s have a look at each one.
+2.Programmer Error
+    Programmer errors depict issues with the program written — bugs. In other words, these are the errors caused by the programmer’s mistakes while writing a program. We cannot handle these errors properly, and the only way to correct them is to fix the codebase. Here are some of the common programmer errors:
+        -Array index out of bounds — trying to access the seventh element of the array when only six are available
+        -Syntax errors — failing to close the curly braces while defining a JavaScript function
+        -Reference errors — accessing a function or variables that are not defined
+        -Deprecation errors and warnings — calling an asynchronous function without a callback
+        -Type error — x object is not iterable
+        -Failing to handle operational errors
+3.Operational Error
+    Every program faces operational errors (even if the program is correct). These are issues during runtime due to external factors that can interrupt the program’s normal flow. Unlike programmer errors, we can understand and handle them. These are some examples:
+        -Unable to connect server/database
+        -Request timeout
+        -Invalid input from the user
+        -Socket hang-up
+        -500 response from a server
+        -File not found
+4.Error handling techniques
+    To handle the errors effectively, we need to understand the error delivery techniques.
+        There are four fundamental strategies to report errors in Node.js:
+            -try…catch blocks
+            -Callbacks
+            -Promises
+            -Event emitters
+
+    1.try...catch()
+        In the try…catch method, the try block surrounds the code where the error can occur. In other words, we wrap the code for which we want to check errors; the catch block handles exceptions in this block.
+            function calculate(num1, num2) {
+                if (num2 === 0) {
+                    throw new Error("Cannot divide by zero");
+                }
+                return num1 / num2;
+            }
+            try {
+                console.log(calculate(3, 0));
+            } catch (err) { // here error handled by try catch block.
+                console.log("Caught:", err.message);
+            }
+
+            console.log("hello");
+    2.Callbacks
+        A callback function (commonly used for asynchronous code) is an argument to the function in which we implement error handling.
+        The purpose of a callback function is to check the errors before the result of the primary function is used. The callback is usually the final argument to the primary function, and it executes when an error or outcome of the operation emerges.
+            Here’s the syntax for a callback function:
+                function (err, result) {}
+            The first argument is for an error, and the second is for the result. In case of an error, the first attribute will contain the error, and the second attribute will be undefined and vice versa. Let’s check out an example where we try to read a file by applying this technique:
+                const fs = require('fs');
+                fs.readFile('/home/Kedar/node.txt', (err, result) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                console.log(result);
+                });
+    
+
+
+
+
