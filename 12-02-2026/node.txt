@@ -1,0 +1,115 @@
+1.what is v8 engine ?
+    V8 is a JavaScript engine developed by Google that converts JavaScript code into machine code so your computer can execute it.
+2.why v8 engine is fast?
+    Node.js is fast because it uses Google’s V8 engine, which compiles JavaScript into optimized machine code using Just-In-Time compilation, along with efficient memory management and runtime optimization.
+3.what is node js architecture?
+    Node.js uses a single-threaded, event-driven, non-blocking I/O architecture powered by the V8 engine and libuv. The Event Loop manages asynchronous operations, allowing Node.js to handle multiple concurrent requests efficiently.
+4.what is the Event loop?
+    The Event Loop in Node.js is a core mechanism that manages asynchronous operations by continuously checking the call stack and callback queue, allowing non-blocking execution in a single-threaded environment.
+5.What is Asynchronous Programming?
+    In Node.js, asynchronous operations let your program do other work while waiting for tasks like file I/O or network requests to complete.
+    This non-blocking approach enables Node.js to handle thousands of concurrent connections efficiently.
+6.File System
+    1.creating file using node.
+        -first need to import the fs(file system) using require
+            const fs=require('fs');
+        -create a folder using fs
+            fs.mkdir('./docs',(err)=>{
+                if(err){
+                    console.log(err.message);
+                }
+                else{
+                    console.log("file created");
+                }
+            })
+            if already exists the same folder in that directory it can not create another insteed of throwing error and this is a asnychronous function
+        -check already folder exists
+            if(! existsSync('./docs',)){
+                fs.mkdir('./docs',(err)=>{
+                    if(err){
+                        console.log(err.message);
+                    }
+                    else{
+                        console.log("file created");
+                    }
+                })
+            }
+            if already file present existsSync() function return true so we use NOT opreator to prevent the creation.
+        -create a file write the data inside the creting file
+            fs.writeFile('./docs',"what do you need to wirte a inside file content",(err)=>{
+                if(err){
+                    console.log(err.message);
+                }
+                else{
+                    console.log("File write successfully")
+                }
+            })
+            if no file exist it create new and write a content, but if already file exits and content also exits it overwrite it.
+        -Read the file using fs
+            fs.readFile('./docs/text.txt',(err,data)=>{
+                if(err){
+                    console.log(err.message);
+                }
+                else{
+                    console.log(data.toString());
+                }
+            })
+        -delete the file using fs
+            if(fs.existsSync('./docs/text/txt')){
+                fs.unlink('./docs/text.txt',(err)=>{
+                    if(err){
+                        console.log(err.message);
+                    }
+                    else{
+                        console.log("file deleted");
+                    }
+                })
+            }
+        -remove the directory using fs
+            if(fs.existsSync('./docs')){
+                fs.rmdir('./docs',(err)=>{
+                    if(err){
+                        console.log(err.message);
+                    }
+                    else{
+                        console.log("folder removed successfully")
+                    }
+                })
+            }   
+        -A stream is a way to handle data piece by piece (chunk by chunk) instead of loading the whole data into memory at once.
+            const readStream = fs.createReadStream('./docs/text.txt')
+
+            readStream.on('data',(buffer)=>{
+                console.log(buffer.toString());
+            }) 
+7.HTTP modules
+    Node.js includes a powerful built-in HTTP module that enables you to create HTTP servers and make HTTP requests.
+    This module is essential for building web applications and APIs in Node.js.
+        Key Features
+            .Create HTTP servers to handle requests and send responses
+            .Make HTTP requests to other servers
+            .Handle different HTTP methods (GET, POST, PUT, DELETE, etc.)
+            .Work with request and response headers
+            .Handle streaming data for large payloads
+    to use HTTP module, include it in your application using the require() method:
+        const http = require('http');
+    Create an HTTP server.
+     the HTTP modules createServer() method creates an HTTP server that listen for request on a spicified port and excute a callback function for each request.
+        const server = http.createServer((req,res)=>{
+            res.writeHead(200,{'content-Type' : 'text/plain'});
+            res.end("hello world")
+            console.log(req.url) // used to find find request from the url
+            console.log(req.method) // used to find request from the method (GET,POST,PUT,DELETE)
+        })
+
+        server.listen(PORT,'localhost',()=>{
+            console.log(`server running at port at http://localhost:${port}/`);
+        })
+        -http.createServer() - Creates a new HTTP server instance
+        -The callback function is executed for each request with two parameters:
+        -req - The request object (http.IncomingMessage)
+        -res - The response object (http.ServerResponse)
+        -res.writeHead() - Sets the response status code and headers
+        -res.end() - Sends the response and ends the connection
+        -server.listen() - Starts the server on the specified port
+
