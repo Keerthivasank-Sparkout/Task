@@ -1,0 +1,103 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.33;
+
+contract ExampleAddress{
+    address public someAddress;
+    
+    function setAddress(address _someAddress) public{ 
+        someAddress = _someAddress;
+    }
+    function getAddress() public view returns (uint){
+        return someAddress.balance;
+    }
+}
+
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.33;
+
+contract ExampleBoolean{
+    bool public isbool;
+
+    function setBool(bool _isbool) public{
+        isbool = _isbool;
+    }
+}
+
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.33;
+
+contract ExampleConstroctor{
+    address public someAddress;
+
+    constructor(address _someAddress){
+        someAddress = _someAddress;
+    }
+
+    function setAddress(address _someAddress)public{
+        someAddress = _someAddress;
+    }
+    
+}
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.33;
+
+contract ExampleMsg{
+    address public someAddress;
+    
+    function setAddress() public{ 
+        someAddress = msg.sender;
+    }
+    
+}
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.33;
+
+contract ExampleString{
+    string public mystring = "hello world";
+    function setString(string memory _mystring) public{
+        mystring = _mystring;
+    }
+    function compareString(string memory _mystring) public view returns(string memory){ 
+        if(keccak256(abi.encodePacked(mystring)) == keccak256(abi.encodePacked(_mystring))){
+            return mystring;
+        }
+        else{
+            return "sorry not match";
+        }
+    }
+}
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.33;
+
+contract ExampleUint{
+    uint256 public isUint;
+    // uint8 public isUint;
+
+    function setUint(uint _isUint) public{
+        isUint = _isUint;
+    }
+}
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.33;
+
+contract ExampleViewPure{
+    uint public statevarialbe;
+    function getData()public view returns(uint){
+        return statevarialbe;
+    }
+    function setDate(uint a,uint b) public pure returns(uint){
+        return a+b;
+    }
+}
+// SPDX-License-Identifier: MIT
+
+pragma solidity 0.8.33;
+
+contract Mycontract {
+     string public ourString = "Hello World and Welcome";
+
+     function UpdateString(string memory _newString) public {
+          ourString = _newString;
+     }
+
+}   

@@ -1,0 +1,89 @@
+1.what is smart contract?
+    It’s like a program stored on the blockchain that runs automatically when certain conditions are met — without needing a middleman.
+2.programming language used for smart contract?
+    solidity
+3.first contract
+    // SPDX-License-Identifier: MIT
+    pragma solidity 0.8.33;
+    contract Mycontract {
+        string public ourString = "Hello World and Welcome";
+        function UpdateString(string memory _newString) public {
+            ourString = _newString;
+        }
+    }   
+4.boolean data 
+    // SPDX-License-Identifier: MIT
+        pragma solidity 0.8.33;
+
+        contract ExampleBoolean{
+            bool public isbool;
+
+            function setBool(bool _isbool) public{
+                isbool = _isbool;
+            }
+        }
+5.Uint data
+
+    // SPDX-License-Identifier: MIT
+        pragma solidity 0.8.33;
+
+        contract ExampleUint{
+            uint256 public isUint; 
+            // uint256 -> 2^256-1
+            //uint8 -> 0 to 256
+            //int -> −2^255 to 2^255 − 1
+
+            function setUint(uint256 _isUint) public{
+                isUint = _isUint;
+            }
+        }
+6.string
+    // SPDX-License-Identifier: MIT
+        pragma solidity 0.8.33;
+
+        contract ExampleString{
+            string public mystring = "hello world";
+            function setString(string memory _mystring) public{
+                mystring = _mystring;
+            }
+            function compareString(string memory _mystring) public view returns(string memory){ 
+                if(keccak256(abi.encodePacked(mystring)) == keccak256(abi.encodePacked(_mystring))){
+                    return mystring;
+                }
+                else{
+                    return "sorry not match";
+                }
+            }
+        }
+7.Address
+    // SPDX-License-Identifier: MIT
+    pragma solidity 0.8.33;
+
+    contract ExampleAddress{
+        address public someAddress;
+        
+        function setAddress(address _someAddress) public{ 
+            someAddress = _someAddress;
+        }
+        function getAddress() public view returns (uint){
+            return someAddress.balance;
+        }
+    }
+8.What is view?
+    A view function can read state variables but cannot modify them.
+9.What is pure?
+    A pure function cannot read or modify state variables; it only works with local data.
+
+    // SPDX-License-Identifier: MIT
+        pragma solidity 0.8.33;
+
+        contract ExampleViewPure{
+            uint public statevarialbe;
+            function getData()public view returns(uint){ // only read the data 
+                return statevarialbe;
+            }
+            function setDate(uint a,uint b) public pure returns(uint){ // modify the localvariable
+                return a+b;
+            }
+        }
+    
