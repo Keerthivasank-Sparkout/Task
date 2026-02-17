@@ -1,0 +1,5 @@
+1.http methods
+    get  - read operation
+    post - write operation
+    put/patch - update operation
+    delete - delete operation
