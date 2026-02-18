@@ -1,0 +1,18 @@
+what is blockchain?
+    A blockchain is a continously growing list of the record called blocks.which are linked and secured using cryptography.
+what is hashing?
+    SHA-256 is a cryptograhpy hash function that converts any input data such as blockchain transcation or block into a unique fixed length 256 bit (32 bytes) output.
+    often represented as a 64 character in hexadcimal string.
+what is immutable ledger?
+    An immutable ledger is a digital record keeping system where data once recorded cannot be altered,deleted, or tempered.
+what is distributed p2p network?
+    1.what is centralized network?
+        A centralized network is a type of computer network where all device(computer,phone,etc) are connected to and  controlled by a single central server or main system.
+    2.what is distributed p2p network?
+        A distributed peer to peer (p2p) network is a type of network where there is no central server and every computer (called peer) can act as both a client and server.
+        each device can send,receive and store data independenly.
+what is mining?
+    Blockchain mining is the process of validating transactions and adding them to the blockchain, a decentralized digital ledger.  Miners collect unconfirmed transactions from a pool (mempool), bundle them into a block, and then compete to solve a complex cryptographic puzzle using computational power. 
+Proof of Work (PoW) is the core mechanism used in mining.  Miners repeatedly hash the block’s data—using the SHA-256 algorithm—along with a variable called a nonce, until the resulting hash meets a specific target (i.e., starts with a certain number of leading zeros).  This process requires significant computational effort, hence the term "proof of work." 
+The first miner to find a valid hash broadcasts the new block to the network. Other nodes verify the solution quickly by checking if the hash is below the target. If valid, the block is added to the blockchain, and the miner receives a block reward (newly minted cryptocurrency) and transaction fees as compensation. 
+This process ensures network security, prevents double-spending, and maintains consensus across the decentralized network. The system is designed so that a new block is added approximately every 10 minutes on average, with the difficulty adjusting every 2,016 blocks to maintain this interval
