@@ -1,0 +1,43 @@
+what is MongoDb?
+    MongoDB is a document database with scalability and fexibility that you can want with the query and indexing that you need.
+key feature of mongo db:
+    document based: mongo db store data in documents(fields-value pair data structure,NoSql)
+    scalable: Very easy to distribute the data across multiple machine as your users and amout of data grow.
+    Flexible: No document data schema required so each document can have different number and type of fiels.
+    Preformance: Embeded data model,indexing,sharding,Flexible document,native duplication etc.
+what is mongoose?
+    Mongoose is an object Data modeling(ODM) library for MongoDB and Node Js, a higher level of abstraction.
+    Mongoose allow for rapid and simple development of mongoDB database interaction.
+    Feature: Schema to model data and relationships,easy data validation,simple query API,middleware,etc
+    Mongoose schema: where we made our data by describing the structure of the data defult value and vlidation.
+    Mongoose model: A wrapper for the schema providing an interface to the database for crud operation.
+create simple model:
+    const tourSchema = new mongoose.schema({
+        name:{
+            type:String,
+            required:[true,"the tour name must be required"],
+            unique:true
+        },
+        rating:{
+            type:Number,
+            default:4.5
+        },
+        price:{
+            type:Number,
+            required:[true,"The tour price must requird"]
+        }
+    })
+    const Tour = mongoose.model('Tour',tourSchema);
+    //this is used to create db structure and validation
+create documents:
+    const newTour=new Tour({ // this is used to give data to collection
+        name:"the forest hiker",
+        rating:4.7,
+        price:540
+    })
+
+    Tour.save().then(doc=>{  //.save() method is used to store the data in db.
+        console.log(doc)
+    }).catch(err=>{
+        console.log(err)
+    })
