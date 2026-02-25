@@ -17,7 +17,7 @@ const tourSchema = new mongoose.Schema({
     },
     difficulty:{
         type:String,
-        required:[true,"The tour must be required difficulty"]
+        required:[true,"The tour must be required difficulty."]
     },
     ratingAverage:{
         type:Number,
